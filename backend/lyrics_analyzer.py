@@ -163,11 +163,10 @@ def get_lyrics(track, artist):
     headers = {'User-Agent': 'Mozilla/5.0'}
 
     try:
-        # Search Genius
+        
         response = requests.get(GENIUS_SEARCH_URL, params={'q': query}, headers=headers)
         data = response.json()
 
-        # Find song hit
         for section in data['response']['sections']:
             if section['type'] == 'song':
                 hits = section['hits']
@@ -177,11 +176,10 @@ def get_lyrics(track, artist):
         else:
             return None
 
-        # Fetch song page
         song_page = requests.get(song_url, headers=headers)
         soup = BeautifulSoup(song_page.text, 'html.parser')
 
-        # Genius puts lyrics in <div data-lyrics-container="true">
+        
         lyrics_divs = soup.find_all('div', attrs={"data-lyrics-container": "true"})
         lyrics = "\n".join(div.get_text(separator="\n") for div in lyrics_divs)
 
@@ -202,7 +200,6 @@ def detect_emotion_from_lyrics(lyrics):
             if keyword in lowered_lyrics:
                 emotion_scores[emotion] += 1
 
-    # Find the emotion with most matches
     best_emotion = max(emotion_scores, key=emotion_scores.get)
 
     if emotion_scores[best_emotion] > 0:
