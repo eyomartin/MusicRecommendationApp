@@ -1,12 +1,7 @@
 import requests
 
 def search_deezer_preview(track, artist):
-    """
-    Given a track and artist name, search Deezer API and return:
-    - preview URL (30 sec)
-    - album cover image URL
-    - direct Deezer song link
-    """
+    
     query = f"{track} {artist}"
     url = f"https://api.deezer.com/search?q={query}"
 
