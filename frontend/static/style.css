@@ -1,4 +1,4 @@
-/* === Reset some default margins and paddings === */
+
 body, h1, h2, h3, p, ul, li {
     margin: 0;
     padding: 0;
@@ -42,7 +42,7 @@ input[type="text"]::placeholder {
 button {
     padding: 12px 20px;
     font-size: 16px;
-    background-color: #27ffd8; /* Logo color */
+    background-color: #27ffd8; 
     color: #1c1c1e;
     font-weight: bold;
     border: none;
@@ -54,7 +54,7 @@ button {
 }
 
 button:hover {
-    background-color: #1fbca7; /* Darker tone of logo color */
+    background-color: #1fbca7;
 }
 
 ul {
@@ -92,7 +92,7 @@ li:hover {
 
 .badge {
     display: inline-block;
-    background-color: #27ffd8; /* Logo color */
+    background-color: #27ffd8; 
     color: #1c1c1e;
     font-size: 12px;
     padding: 4px 8px;
@@ -114,7 +114,7 @@ img {
 }
 
 a {
-    color: #27ffd8; /* Logo color */
+    color: #27ffd8;
     text-decoration: none;
     font-weight: bold;
 }
@@ -141,7 +141,7 @@ a:hover {
 }
 
 .navbar a {
-    color: #27ffd8; /* same as your button/logo accent color */
+    color: #27ffd8; 
     text-decoration: none;
     font-weight: bold;
 }
@@ -166,7 +166,7 @@ a:hover {
 .privacy-page h3 {
     margin-top: 40px;
     margin-bottom: 15px;
-    color: #27ffd8; /* Optional: make subheadings pop */
+    color: #27ffd8; 
 }
 
 .privacy-page p {
@@ -187,7 +187,7 @@ a:hover {
 .privacy-card h3 {
     margin-top: 30px;
     margin-bottom: 10px;
-    color: #27ffd8; /* Optional - make h3 pop */
+    color: #27ffd8; 
 }
 
 .privacy-card p {
