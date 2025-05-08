@@ -1,13 +1,13 @@
 import nltk
 from nltk.sentiment import SentimentIntensityAnalyzer
 
-# Download NLTK resources (only needs to run once)
+
 nltk.download('vader_lexicon')
 
-# Initialize sentiment analyzer
+
 sia = SentimentIntensityAnalyzer()
 
-# Define custom keyword banks for moods and scenarios
+
 CUSTOM_KEYWORDS = {
     # Moods
     'love': ['love', 'in love', 'adore', 'crush', 'romantic', 'falling for', 'loved'],
@@ -41,19 +41,16 @@ CUSTOM_KEYWORDS = {
 
 
 def analyze_mood(prompt_text):
-    """
-    this analyses the user input and returns a tuple (type, label):
-    for exmaple: ("mood", "happy") or ("scenario", "car_trip")
-    """
+    
     lowered = prompt_text.lower()
-    # list of some scenarios
+    
     SCENARIOS = [
         'car_trip', 'birthday', 'workout', 'study_session', 'beach_day',
         'festival', 'cooking', 'rainy_day', 'morning_routine', 'night_drive',
         'house_party', 'coffee_shop_study', 'lazy_sunday', 'city_walk', 'sunset_viewing', 'hiking_adventure', 'snowy_day', 'after_work_relaxation', 'gaming_session', 'cleaning_day', 'airport_wait', 'romantic_dinner', 'picnic_in_the_park'
     ]
 
-    # First check for strong custom keywords
+    s
     for label, keywords in CUSTOM_KEYWORDS.items():
         for keyword in keywords:
             if keyword in lowered:
@@ -62,7 +59,7 @@ def analyze_mood(prompt_text):
                 else:
                     return ('mood', label)
 
-    #  no strong keywords then fallback to sentiment analysis (only for moods)
+   
     sentiment = sia.polarity_scores(prompt_text)
 
     if sentiment['compound'] >= 0.5:
