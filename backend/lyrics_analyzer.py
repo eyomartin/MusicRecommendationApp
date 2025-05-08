@@ -1,7 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 
-# Define lyric-based emotion keyword banks
+
 LYRIC_KEYWORDS = {
     'happy': [
         'happy', 'joyful', 'smiling', 'laughing', 'good vibes', 'cheerful', 'carefree', 'feeling good',
@@ -156,10 +156,9 @@ LYRIC_KEYWORDS = {
 GENIUS_SEARCH_URL = "https://genius.com/api/search/multi"
 
 def get_lyrics(track, artist):
-    """
-    Try to fetch song lyrics from Genius using track and artist names.
-    Returns the lyrics text if found, or None.
-    """
+    
+    
+    
     query = f"{track} {artist}"
     headers = {'User-Agent': 'Mozilla/5.0'}
 
@@ -193,10 +192,7 @@ def get_lyrics(track, artist):
         return None
 
 def detect_emotion_from_lyrics(lyrics):
-    """
-    Scan the lyrics and return a detected emotion (love, heartbreak, etc.)
-    Returns 'neutral' if nothing strong is found.
-    """
+    
     lowered_lyrics = lyrics.lower()
 
     emotion_scores = {emotion: 0 for emotion in LYRIC_KEYWORDS}
