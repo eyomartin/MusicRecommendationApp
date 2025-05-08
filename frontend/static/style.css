@@ -1,0 +1,197 @@
+/* === Reset some default margins and paddings === */
+body, h1, h2, h3, p, ul, li {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #1c1c1e;
+    color: #f5f5f7;
+    margin: 40px;
+}
+
+.logo {
+    max-width: 180px;
+    height: auto;
+    display: block;
+    margin: 0 auto 30px auto;
+}
+
+h2, h3 {
+    color: #ffffff;
+    text-align: center;
+}
+
+input[type="text"] {
+    width: 60%;
+    padding: 12px;
+    font-size: 16px;
+    border-radius: 6px;
+    border: none;
+    background-color: #2c2c2e;
+    color: #ffffff;
+    display: block;
+    margin: 0 auto;
+}
+
+input[type="text"]::placeholder {
+    color: #aaaaaa;
+}
+
+button {
+    padding: 12px 20px;
+    font-size: 16px;
+    background-color: #27ffd8; /* Logo color */
+    color: #1c1c1e;
+    font-weight: bold;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin: 20px auto;
+    display: block;
+}
+
+button:hover {
+    background-color: #1fbca7; /* Darker tone of logo color */
+}
+
+ul {
+    list-style: none;
+    margin-top: 20px;
+    padding-left: 0;
+}
+
+li {
+    background-color: #2c2c2e;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s ease;
+}
+
+li:hover {
+    transform: scale(1.02);
+}
+
+.mood-info {
+    margin-top: 30px;
+    font-size: 18px;
+    text-align: center;
+}
+
+.results {
+    margin-top: 40px;
+    padding: 25px;
+    background-color: #2c2c2e;
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
+}
+
+.badge {
+    display: inline-block;
+    background-color: #27ffd8; /* Logo color */
+    color: #1c1c1e;
+    font-size: 12px;
+    padding: 4px 8px;
+    margin-left: 8px;
+    margin-top: 5px;
+    border-radius: 50px;
+}
+
+audio {
+    margin-top: 10px;
+    width: 90%;
+}
+
+img {
+    margin-top: 10px;
+    border-radius: 8px;
+    max-width: 100px;
+    height: auto;
+}
+
+a {
+    color: #27ffd8; /* Logo color */
+    text-decoration: none;
+    font-weight: bold;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+/* ====== Navigation Bar ====== */
+.navbar {
+    padding: 10px 20px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+
+.navbar ul {
+    list-style-type: none;
+}
+
+.navbar li {
+    display: inline;
+    margin-left: 20px;
+}
+
+.navbar a {
+    color: #27ffd8; /* same as your button/logo accent color */
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.navbar a:hover {
+    text-decoration: underline;
+}
+
+/* ====== Privacy Page Styling ====== */
+.privacy-page {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 0 20px;
+    text-align: left;
+}
+
+.privacy-page h2 {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.privacy-page h3 {
+    margin-top: 40px;
+    margin-bottom: 15px;
+    color: #27ffd8; /* Optional: make subheadings pop */
+}
+
+.privacy-page p {
+    margin-bottom: 20px;
+    line-height: 1.6;
+    font-size: 17px;
+}
+
+/* ====== Privacy Card Styling ====== */
+.privacy-card {
+    background-color: #2c2c2e;
+    padding: 30px;
+    border-radius: 12px;
+    margin-top: 40px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
+}
+
+.privacy-card h3 {
+    margin-top: 30px;
+    margin-bottom: 10px;
+    color: #27ffd8; /* Optional - make h3 pop */
+}
+
+.privacy-card p {
+    margin-bottom: 20px;
+    line-height: 1.6;
+    font-size: 16px;
+}

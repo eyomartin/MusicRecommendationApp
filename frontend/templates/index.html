@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Music Recommendation</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/privacy">Privacy & Data Use</a></li>
+        </ul>
+    </nav>
+
+    <!-- Logo on top -->
+    <div class="logo-container">
+        <img src="{{ url_for('static', filename='Logo.png') }}" alt="App Logo" class="logo">
+    </div>
+
+    <h2>Enter your mood or current scenario:</h2>
+    <form method="POST">
+        <input type="text" name="mood" placeholder="I am feeling happy..." required>
+        <button type="submit">Submit</button>
+    </form>
+
+    {% if mood %}
+        <div class="mood-info">
+            <p>You entered: <strong>{{ mood }}</strong></p>
+            {% if label_type == "scenario" %}
+                <p>Detected scenario: <strong>{{ emotion }}</strong></p>
+            {% else %}
+                <p>Detected mood: <strong>{{ emotion }}</strong></p>
+            {% endif %}
+        </div>
+    {% endif %}
+
+    {% if songs %}
+    <div class="results">
+        <h3>Recommended Songs:</h3>
+        <ul>
+            {% for song in songs %}
+                <li>
+                    <strong>{{ song.track }}</strong> by {{ song.artist }}
+                    {% if song.badge %}
+                        <span class="badge">{{ song.badge }}</span>
+                    {% endif %}
+                    <br>Match: {{ song.score }}%
+                    <br>
+                    {% if song.cover %}
+                        <img src="{{ song.cover }}" width="100">
+                    {% endif %}
+                    <br>
+                    {% if song.preview %}
+                        <audio controls>
+                            <source src="{{ song.preview }}" type="audio/mpeg">
+                            Your browser does not support audio.
+                        </audio>
+                    {% else %}
+                        <p><em>No preview available</em></p>
+                    {% endif %}
+                    <br>
+                    <a href="{{ song.deezer_url }}" target="_blank">Listen on Deezer</a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endif %}
+</body>
+</html>
