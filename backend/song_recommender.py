@@ -7,7 +7,7 @@ df = pd.read_csv('dataset/spotify_songs.csv')
 print("Actual column names from CSV:")
 print(df.columns)
 
-# Genres we want to completely exclude
+# genres completely excluded based on preferences
 EXCLUDED_GENRES = [
     "cantopop", "children", "comedy", "detroit-techno",
     "indian", "iranian", "j-pop", "j-rock", "kids",
@@ -23,7 +23,7 @@ df = df[~df['track_genre'].str.lower().isin(EXCLUDED_GENRES)]  # exclude some of
 print("Dataset loaded successfully.")
 print("Number of songs after cleaning:", len(df))
 
-# Title-based keyword bank for moods and scenarios
+
 TITLE_KEYWORDS = {
     'love': ["love", "fall in love", "crazy love", "loving you", "forever love", "adore", "ily", "i love you", "i love her"],
     'heartbreak': ["broken heart", "heartbreak", "tears", "lost love", "goodbye", "crying"],
@@ -90,7 +90,7 @@ def recommend_songs_by_mood(mood, limit=10, user_prompt=""):
     profile = PROFILES.get(mood, PROFILES['neutral'])
     user_prompt_lower = user_prompt.lower()
 
-    # Calculate base audio match
+    
     df['match_score'] = df.apply(lambda row:
             1 - (
                     abs(profile['valence'] - row['valence']) * 0.25 +
@@ -100,7 +100,7 @@ def recommend_songs_by_mood(mood, limit=10, user_prompt=""):
                     abs(profile['liveness'] - row['liveness']) * 0.15
             ), axis=1)
 
-    ### FIRST: Find 4 strong title matches ###
+    
     title_matches = []
     picked_song_ids = set()
 
@@ -130,11 +130,11 @@ def recommend_songs_by_mood(mood, limit=10, user_prompt=""):
                 picked_song_ids.add((track, artist))
                 break
 
-    # Pick top 4 title matches now
+    
     all_possible_titles = sorted(all_possible_titles, key=lambda x: x['score'], reverse=True)
     title_matches = all_possible_titles[:4]
 
-    ### SECOND: Find 6 normal matches ###
+    
     recommendations = []
 
     sorted_candidates = df.sort_values(by='match_score', ascending=False)
@@ -148,7 +148,7 @@ def recommend_songs_by_mood(mood, limit=10, user_prompt=""):
         if (track, artist) in picked_song_ids:
             continue  # Skip title-matched songs
 
-        # fetch the lyrics
+        
         lyrics = get_lyrics(track, artist)
 
         if lyrics:
@@ -167,11 +167,11 @@ def recommend_songs_by_mood(mood, limit=10, user_prompt=""):
         if len(recommendations) >= (limit - len(title_matches)):
             break
 
-    ### FINAL: Merge title-matches + normal matches ###
+    
     final_list = title_matches + recommendations
     final_list = sorted(final_list, key=lambda x: x['score'], reverse=True)
 
-    # Prepare final output: track, artist, score, badge
+    
     final_simplified = []
     for song in final_list[:limit]:
         final_simplified.append({
